@@ -1,0 +1,99 @@
+﻿@model IEnumerable<FlashCardsBootstrapLol.Models.Card>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="card-columns container" style="margin-top:25px">
+    @foreach (var item in Model)
+    {
+        <a class="card card-media" style="color: #212529 !important; text-decoration: none !important" href="#" data-toggle="modal" data-target="#exampleModal">
+            @switch (item.Type)
+            {
+                case FlashCardsBootstrapLol.Models.CardType.ImageTop:
+
+                    <img class="card-img-top" src="/Images/mona lisa.jpg" alt="Card image cap">
+                    <div class="card-img-overlay">
+                        <button type="button" class="btn btn-success btn-outline-light btn-card-save" style="margin-top: -10px; margin-left: -10px">Save</button>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">@Html.DisplayFor(ModelItem => item.Title)</h4>
+                        <p class="card-text">@Html.DisplayFor(ModelItem => item.Content)</p>
+                    </div>
+
+                    break;
+                case FlashCardsBootstrapLol.Models.CardType.ImageMiddle:
+                    
+                        <div class="card-body">
+                            <h4 class="card-title">@Html.DisplayFor(ModelItem => item.Title)</h4>
+                        </div>
+                        <div>
+                            <img class="card-img-top" src="/Images/mona lisa.jpg" alt="Card image cap" />
+                            <div class="card-img-overlay">
+                                <button type="button" class="btn btn-success btn-outline-light btn-card-save" style="margin-top: -10px; margin-left: -10px">Save</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@Html.DisplayFor(ModelItem => item.Content)</p>
+                        </div>
+
+                    break;
+                case FlashCardsBootstrapLol.Models.CardType.ImageBottom:
+                    
+                        <div class="card-body">
+                            <h4 class="card-title">@Html.DisplayFor(ModelItem => item.Title)</h4>
+                            <p class="card-text">@Html.DisplayFor(ModelItem => item.Content)</p>
+                        </div>
+                        <div>
+                            <img class="card-img-top" src="/Images/mona lisa.jpg" alt="Card image cap" />
+                            <div class="card-img-overlay">
+                                <button type="button" class="btn btn-success btn-outline-light btn-card-save" style="margin-top: -10px; margin-left: -10px">Save</button>
+                            </div>
+                        </div>
+
+                    break;
+                case FlashCardsBootstrapLol.Models.CardType.Qoute:
+                    
+                        <blockquote class="card-body">
+                            <p class="card-text">@Html.DisplayFor(ModelItem => item.Content)</p>
+                            <footer class="card-title">
+                                <small style="text-align: left">
+                                    @Html.DisplayFor(ModelItem => item.Title)
+                                </small>
+                            </footer>
+                        </blockquote>
+
+                    break;
+                case FlashCardsBootstrapLol.Models.CardType.Recomendations:
+                    break;
+                default:
+                    break;
+            }
+        </a>
+        //!!!!MODAL IS HERE!!!!!
+        <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">@Html.DisplayFor(ModelItem => item.Title)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="card-img-top" src="/Images/mona lisa.jpg" alt="Card image cap" />
+                        <div class="card-body">
+                            <p class="card-text">@Html.DisplayFor(ModelItem => item.Content)</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger">Report</button>
+                        <button type="button" class="btn btn-primary">Like</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        //!!!!MODAL IS HERE!!!!!
+    }
+</div>
+
